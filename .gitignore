@@ -1,0 +1,21 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+Thumbs.db
+
+# Local/generated delivery artifacts
+*.env
+*.key
+*.pem
+*.pub
+*.log
+*handoff*
+*交付*
+*订阅*
+*节点*
+*VPS*.txt
+
+# Local tool state
+.codex/
+.venv/
+venv/

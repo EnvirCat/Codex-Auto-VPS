@@ -1,0 +1,4 @@
+interface:
+  display_name: "VPS Proxy Delivery"
+  short_description: "Ship VPS panels, nodes, and subscriptions"
+  default_prompt: "Use $vps-proxy-delivery to deploy a VPS proxy panel, optimized nodes, one-click subscription links, and a simple handoff document."
