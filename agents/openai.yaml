@@ -1,4 +1,4 @@
 interface:
-  display_name: "VPS Proxy Delivery"
-  short_description: "Ship VPS panels, nodes, and subscriptions"
-  default_prompt: "Use $vps-proxy-delivery to deploy a VPS proxy panel, optimized nodes, one-click subscription links, and a simple handoff document."
+  display_name: "Codex-Auto-VPS"
+  short_description: "中文 VPS 自动部署、优化、安全加固与订阅交付"
+  default_prompt: "Use $codex-auto-vps to deploy and harden a VPS node, generate one-click subscriptions, test connectivity, and write a Chinese handoff document."

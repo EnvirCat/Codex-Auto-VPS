@@ -1,4 +1,4 @@
-# VPS Proxy Delivery Runbook
+# Codex-Auto-VPS Runbook
 
 ## Intake Checklist
 

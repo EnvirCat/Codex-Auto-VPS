@@ -1,24 +1,25 @@
-# Security Policy
+# 安全策略
 
-## Secrets
+## 不要提交的内容
 
-Do not commit:
+请不要把以下内容提交到仓库：
 
-- SSH private keys
-- VPS passwords
-- panel credentials
-- residential proxy credentials
-- generated subscription URLs
-- handoff files with live IPs, UUIDs, passwords, or tokens
+- SSH 私钥
+- VPS 密码
+- 面板账号密码
+- 住宅代理账号密码
+- 真实订阅链接
+- 带真实 IP、UUID、密码、token 的交付文档
 
-## Reporting
+## 使用建议
 
-If you find a workflow that accidentally encourages leaking credentials or leaving unsafe services exposed, please open an issue with a redacted example.
+- 每台 VPS 保持独立，除非你明确需要互相中转。
+- 不需要面板时，关闭公网 3x-ui 面板。
+- 不需要兼容节点时，关闭 VLESS / Reality / Xray。
+- 防火墙默认拒绝入站，只放行 SSH、订阅端口和必要 Hy2 UDP 端口。
+- SSH 尽量使用密钥登录，并关闭密码登录。
+- 链接泄露后，轮换节点端口、认证密码、混淆密码和订阅路径。
 
-## Operational Guidance
+## 报告问题
 
-- Keep VPSes independent unless explicitly required.
-- Disable unused panels and compatibility services.
-- Use firewall default-deny inbound rules.
-- Rotate node credentials and subscription paths when exposure is suspected.
-- Prefer key-based SSH and disable password authentication on production hosts.
+如果你发现某个流程容易泄露凭据、误开高风险端口，或者会把真实订阅写入仓库，请提交 issue，并使用脱敏示例。

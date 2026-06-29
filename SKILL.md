@@ -1,9 +1,9 @@
 ---
-name: vps-proxy-delivery
-description: Deploy and hand off independent VPS proxy nodes for non-technical users. Use when the user provides VPS SSH/login details or asks for 3x-ui, BBR, VLESS Reality, Hysteria2, residential SOCKS5 backend, Hiddify/Shadowrocket subscriptions, speed testing, route checks, panel credentials, or a foolproof delivery document.
+name: codex-auto-vps
+description: 中文 VPS 自动部署、网络优化、安全加固与订阅交付 Skill。Use when the user provides VPS SSH/login details or asks for 3x-ui, BBR, VLESS Reality, Hysteria2, residential SOCKS5 backend, Hiddify/Shadowrocket subscriptions, speed testing, route checks, panel credentials, or a foolproof Chinese handoff document.
 ---
 
-# VPS Proxy Delivery
+# Codex-Auto-VPS
 
 ## Operating Rules
 
