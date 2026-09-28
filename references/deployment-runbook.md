@@ -1,5 +1,7 @@
 # Codex-Auto-VPS Runbook
 
+For provider-quota traffic display on existing subscriptions, read [traffic-metering.md](traffic-metering.md) and use its allowlisted loopback meter. Do not add a public port or panel just to show usage.
+
 ## Intake Checklist
 
 Collect:
@@ -272,6 +274,12 @@ Invoke-WebRequest -UseBasicParsing http://IP:28703/US-Fast-VPS-base64
 ```
 
 Hiddify often displays the URL path as the subscription name. Prefer a friendly alias path over a random token path.
+
+## Subscription Traffic Display
+
+Before installation, confirm the provider quota, reset day/time zone, current usage, expiry date, and the public network interface. The meter is host-wide RX+TX accounting; it is not per-user and does not enforce a cutoff. Use decimal byte units for provider limits written as GB. Back up only the exact Caddyfile being edited, and keep the backup root-only because subscription paths may be present in the file.
+
+Use the dedicated installer in [traffic-metering.md](traffic-metering.md). It must preserve both subscription bodies and all current node settings, bind its backend to loopback, allow only the two exact subscription paths, and return numeric `upload`, `download`, `total`, and `expire` fields. Verify `HEAD` and `GET`, compare body hashes, confirm unknown paths still return 404, and make sure no new public listener or firewall allowance was added.
 
 ## Validation Matrix
 

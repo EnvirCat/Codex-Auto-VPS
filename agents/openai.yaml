@@ -1,4 +1,4 @@
 interface:
   display_name: "Codex-Auto-VPS"
-  short_description: "中文 VPS 自动部署、优化、安全加固与订阅交付"
-  default_prompt: "Use $codex-auto-vps to deploy and harden a VPS node, generate one-click subscriptions, test connectivity, and write a Chinese handoff document."
+  short_description: "中文 VPS 部署、安全加固、订阅与流量显示"
+  default_prompt: "Use $codex-auto-vps to deploy or maintain a VPS, add monthly quota usage to existing subscriptions, test connectivity, and write a Chinese handoff document."

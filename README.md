@@ -15,10 +15,11 @@ Codex-Auto-VPS 是一个 Codex Skill，用来把一台独立 VPS 从“刚买回
 
 - SSH 接入与系统检查
 - BBR/fq 网络优化
-- 3x-ui 面板安装与隔离部署
+- 按需安装 3x-ui；默认不额外暴露管理面板
 - VLESS Reality / Hysteria2 节点预设
 - 可选住宅 SOCKS5 后端出口
 - 一键订阅链接生成
+- VPS 整机月流量计量，并通过订阅元数据显示剩余额度（无需 3x-ui）
 - Hiddify / Shadowrocket 导入友好命名
 - 节点速度、出口 IP、AI 网站与常用网站连通性检查
 - 防火墙、SSH、fail2ban、安全端口收敛
@@ -60,9 +61,12 @@ SSH 密码或私钥
 ├── agents/
 │   └── openai.yaml
 ├── references/
-│   └── deployment-runbook.md
+│   ├── deployment-runbook.md
+│   └── traffic-metering.md
 └── scripts/
-    └── subscription_server.py
+    ├── install_traffic_meter.py
+    ├── subscription_server.py
+    └── traffic_meter.py
 ```
 
 ## 安装方式
@@ -85,11 +89,12 @@ $codex-auto-vps
 
 1. 连接 VPS，确认系统、内存、磁盘、监听端口
 2. 开启 BBR/fq 等基础网络优化
-3. 安装或调整 3x-ui / Xray / Hysteria2
+3. 按需部署或调整 Xray / Hysteria2（只有明确要求时才安装管理面板）
 4. 生成速度优先节点和可选后端出口节点
 5. 创建 Hiddify / Shadowrocket 可导入的一键订阅
 6. 验证出口 IP、网站可达性、端口暴露和服务状态
-7. 输出一份普通用户能看懂的交付说明
+7. 如需显示 VPS 月流量，按服务商额度与重置周期启用本机计量
+8. 输出一份普通用户能看懂的交付说明
 
 ## 安全模式
 

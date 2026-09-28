@@ -90,7 +90,26 @@ Validation:
 - Confirm subscriptions return 200 and contain only intended nodes.
 - Confirm each Hy2 node exits through the expected IP and can reach OpenAI API or another simple HTTPS target.
 
+## VPS-Wide Traffic Display
+
+When the user asks to show remaining traffic without a management panel, first confirm the VPS provider's quota, reset day/time zone, and current usage. Treat the display as VPS-wide transfer accounting, not per-user or per-node accounting: sum RX and TX byte deltas on the public network interface. State clearly that this metadata reports usage but does not throttle or stop traffic at the quota.
+
+Use decimal bytes when the provider defines a quota as `1000 GB` (`1,000,000,000,000` bytes). Seed the first meter state from a current provider usage reading so installation does not reset the displayed allowance. If the provider only supplies a combined usage value, preserve the total and explain that the initial upload/download split is approximate. Use the provider's reset cycle and server time zone; never infer a calendar day from an undated screenshot.
+
+For an existing Caddy-hosted subscription, use `scripts/traffic_meter.py` with `scripts/install_traffic_meter.py` and read `references/traffic-metering.md` first. The installer must:
+
+- Bind the meter only to `127.0.0.1`; do not open a firewall port or expose a panel.
+- Replace only the two existing, exact Clash and Hiddify static handlers with the local meter backend. Preserve the subscription bodies, node credentials, routing, titles, update intervals, and all unrelated Caddy routes.
+- Keep an exact, root-only Caddyfile backup and validate the candidate before reload.
+- Serve only the two allowlisted subscription paths. Do not log request paths because subscription paths are bearer secrets.
+- Persist interface counters across service restarts and VPS reboots, and reset usage only at the confirmed monthly boundary.
+- Add a valid `Subscription-Userinfo` header with numeric `upload`, `download`, `total`, and `expire` fields. Use the confirmed quota in bytes and a verified expiry timestamp (or `0` when the plan has no expiry); malformed or incomplete metadata can make clients omit the usage display.
+
+Validate both `HEAD` and `GET` on the existing HTTPS subscriptions, require status 200 and valid numeric metadata, confirm the response body remains byte-for-byte unchanged, and verify every unknown path still returns 404. Confirm the meter listens only on loopback and that no node service, protocol port, firewall rule, or subscription URL changed.
+
 ## Resources
 
 - Read [references/deployment-runbook.md](references/deployment-runbook.md) before live deployment or troubleshooting.
+- Read [references/traffic-metering.md](references/traffic-metering.md) before adding provider-quota usage metadata to a subscription.
 - Use [scripts/subscription_server.py](scripts/subscription_server.py) as the reusable HTTP subscription server template when a client-friendly one-click subscription is needed.
+- Use [scripts/traffic_meter.py](scripts/traffic_meter.py) and [scripts/install_traffic_meter.py](scripts/install_traffic_meter.py) for an allowlisted, loopback-only VPS-wide usage meter.
