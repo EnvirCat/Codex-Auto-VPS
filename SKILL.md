@@ -53,6 +53,9 @@ For security-hardening requests, produce a trimmed handoff instead:
    - For security-hardening mode, prefer Hysteria2-only and remove/disable compatibility nodes.
 
 4. Subscription UX
+   - Preconfigure split routing for every client with a compatible full profile. Put international AI proxy exceptions ahead of mainland China direct rules, followed by a catch-all to the selected node. See [client split routing](references/client-split-routing.md) for the import mapping and validation.
+   - Provide full profiles for Clash-compatible clients, sing-box, Shadowrocket, Surge, Surfboard, Loon and Quantumult X when the selected node protocols are compatible.
+   - For node-only subscriptions such as ordinary Hiddify imports, give the separate routing step or supported routing file. Keep the node format available for existing clients.
    - Do not expose the random token as the user-facing subscription name.
    - Create a friendly alias path such as `US-Fast-VPS3`, `US-LAX-Fast`, or `US-AI-Residential`.
    - Keep the token URL as a private fallback.
@@ -61,6 +64,7 @@ For security-hardening requests, produce a trimmed handoff instead:
 5. Validation
    - Check services, listening ports, firewall, and external reachability.
    - Import the subscription or test the links with a local client/proxy when possible.
+   - Verify both a mainland direct match and an international AI proxy match before claiming split routing. Identify which clients have only passed format validation.
    - Verify exit IP and access to the user-relevant categories: AI sites, streaming, and general web.
    - If speed is poor, distinguish server capacity from client route, UDP blocking, DNS/QUIC/browser issues, and client-selected node.
 
